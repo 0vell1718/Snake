@@ -43,5 +43,11 @@ namespace Snake
             else if (direction == Direction.Down)
                 y -= offset;
         }
+
+        public void Clear()
+        {
+            sym = ' ';
+            Draw();
+        }
     }
 }
