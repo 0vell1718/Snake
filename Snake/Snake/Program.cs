@@ -10,8 +10,6 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-
-            // Console.WriteLine(Console.BufferHeight + "---" + Console.BufferWidth);
             Console.SetWindowSize(80, 25);
             Console.SetBufferSize(80, 25);
 
@@ -24,6 +22,10 @@ namespace Snake
             downLine.Draw();
             leftLine.Draw();
             rightLine.Draw();
+
+            Point ps = new Point(5, 5, '*');
+            Snake snake = new Snake(ps, 3, Direction.Right);
+            snake.Draw();
 
             Console.ReadKey();
         }
