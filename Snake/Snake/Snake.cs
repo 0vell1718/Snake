@@ -10,7 +10,7 @@ namespace Snake
     {
         Direction direction;
 
-        public Snake (Point tail, int lenght, Direction direction)
+        public Snake(Point tail, int lenght, Direction direction)
         {
             this.direction = direction;
             pList = new List<Point>();
@@ -42,15 +42,29 @@ namespace Snake
         }
 
         public void HandleKey(ConsoleKey key)
-        {         
+        {
             if (key == ConsoleKey.LeftArrow && direction != Direction.Right)
-               direction = Direction.Left;
+                direction = Direction.Left;
             else if (key == ConsoleKey.RightArrow && direction != Direction.Left)
                 direction = Direction.Right;
             else if (key == ConsoleKey.UpArrow && direction != Direction.Down)
                 direction = Direction.Up;
             else if (key == ConsoleKey.DownArrow && direction != Direction.Up)
                 direction = Direction.Down;
+        }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.sym = head.sym;
+                food.Draw();
+                pList.Add(head);
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

@@ -44,6 +44,14 @@ namespace Snake
                 y += offset;
         }
 
+        public bool IsHit(Point p)
+        {
+            if (x == p.x && y == p.y)
+                return true;
+            else
+                return false;
+        }
+
         public void Clear()
         {
             sym = ' ';
